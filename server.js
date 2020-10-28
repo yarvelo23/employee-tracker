@@ -25,3 +25,17 @@ const connection = mysql.createConnection({
 
 });
 
+// specifying error message
+connection.connect((err) => {
+    if (err) {
+        console.log(err);
+        res.status(500);
+        return res.send("Could not connect to the database.");
+    }
+    console.log("Connection Successful!");
+    
+    // inquirer function to prompt user 
+    userPrompt();
+})
+
+
