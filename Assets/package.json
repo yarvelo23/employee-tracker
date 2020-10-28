@@ -1,0 +1,26 @@
+{
+  "name": "assets",
+  "version": "1.0.0",
+  "description": "Homework 12 - Employee Tracker",
+  "main": "server.js",
+  "dependencies": {
+    "console.table": "^0.10.0",
+    "inquirer": "^7.3.3",
+    "sql": "^0.78.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \\error: no test specified\\",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yarvelo23/employee-tracker.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yarvelo23/employee-tracker/issues"
+  },
+  "homepage": "https://github.com/yarvelo23/employee-tracker#readme"
+}
