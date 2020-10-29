@@ -11,6 +11,7 @@ const util = require("util");
 const logo = require('asciiart-logo');
 
 const config = require('./package.json');
+const { allowedNodeEnvironmentFlags } = require("process");
 
 // console log to confirm json rendered
 console.log(logo(config).render());
@@ -146,7 +147,36 @@ function userPrompt() {
                             userPrompt();
                         })
                     break;
-                    
+                
+                case "Add Role":
+                    inquirer
+                        .prompt([
+                            {
+                                name: "title",
+                                type: "input",
+                                message: "Please enter the role's title",
+                                validate: answer => {
+                                    if (answer !== "") {
+                                        return true;
+                                    }
+                                    return "Please enter at least one character!";
+                                }
+                            },
+                            {
+                                name: "salary",
+                                type: "input",
+                                message: "Please enter the role salary",
+                            },
+                            {
+                                name: "department_id",
+                                type: "input",
+                                message: "Please enter the role department id",
+                            }
+                        ]).then(answers => {
+                            addRole(answers.title, answers.salary, answers.department_id);
+                            userPrompt();
+                        })
+                    break;
             }
         })
 }
