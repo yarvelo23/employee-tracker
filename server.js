@@ -268,7 +268,7 @@ function updateByManager(managerId, employeeId) {
 
     var updateManager = connection.query(
         "UPDATE employee SET manager_id = ? WHERE id = ?",
-        [managerId, employeeId]
+        [managerId, employeeId],
         function (error, updateManager) {
             if (error) throw error
         })
@@ -276,3 +276,91 @@ function updateByManager(managerId, employeeId) {
 }
 
 // function to add employee
+function addEmployee(employeeFirst, employeeLast, department, manager) {
+
+    var add = connection.query(
+        "INSERT INTO employee SET first_name = ?, last_name = ?, role_id = ?, manager_id = ?",
+        [employeeFirst, employeeLast, department, manager],
+        function (error, add) {
+            if (error) throw error
+        })
+
+    byEmployees();
+}
+
+// function to view all departments
+function departmentTable() {
+    var depTable = connection.query("SELECT d_name FROM department;",
+
+
+        function (error, depTable) {
+            if (error) throw error
+            console.table(depTable)
+        })
+}
+
+// function to add a new department
+function addDepartment(department) {
+
+    var department = connection.query(
+        "INSERT INTO department SET d_name = ?",
+        [department],
+        function (error, department) {
+            if (error) throw error
+            // console.table(manager)
+        })
+
+    departmentTable();
+}
+
+// function to show roles only
+function roleTable() {
+    var roleT = connection.query("SELECT title, salary, department_id FROM role;",
+
+        function (error, roleT) {
+            if (error) throw error
+            console.table(roleT)
+        })
+}
+
+// function to add a new role
+function addRole(title, salary, department_id) {
+
+    var newRole = connection.query(
+        "INSERT INTO role SET title = ?, salary = ?, department_id = ?",
+        [title, salary, department_id],
+        function (error, newRole) {
+            if (error) throw error
+            
+        })
+
+    roleTable();
+}
+
+// function to remove employee
+function removeEmployee(id) {
+
+    var add = connection.query(
+        "DELETE FROM employee WHERE id = ?",
+        [id],
+        function (error, id) {
+            if (error) throw error
+        })
+
+    byEmployees();
+}
+
+// function to update employee role
+function updateByRole(employeeId, roleId) {
+
+    var byRole = connection.query(
+        "UPDATE employee SET role_id = ? WHERE id = ?",
+
+        [roleId, employeeId],
+        function (error, role) {
+            if (error) throw error
+
+        })
+    byDepartment();
+
+}
