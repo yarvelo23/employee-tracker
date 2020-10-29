@@ -1,11 +1,13 @@
 {
-  "name": "assets",
+  "name": "EmployeeTracker",
   "version": "1.0.0",
   "description": "Homework 12 - Employee Tracker",
   "main": "server.js",
   "dependencies": {
+    "asciiart-logo": "^0.2.6",
     "console.table": "^0.10.0",
     "inquirer": "^7.3.3",
+    "mysql": "^2.18.1",
     "sql": "^0.78.0"
   },
   "devDependencies": {},
