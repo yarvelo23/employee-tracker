@@ -38,4 +38,25 @@ connection.connect((err) => {
     userPrompt();
 })
 
+// function to prompt user
+function userPrompt() {
+    inquirer
+        .prompt({
+            name: "action",
+            type: "list",
+            message: "What would you like to do?",
+            choices: [
+                "View all employees",
+                "View all employees by department",
+                "View all employees by manager",
+                "Add Employee",
+                "Add department",
+                "Add Role",
+                "Remove Employee",
+                "Update employee role",
+                "Update employee manager"
+            ]
 
+            
+        })
+}
