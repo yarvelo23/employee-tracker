@@ -242,3 +242,13 @@ function byEmployees() {
             console.table(results)
         })
 };
+
+// function to view employees by department
+function byDepartment() {
+    var department = connection.query("SELECT employee.id, employee.first_name, employee.last_name, department.d_name FROM employee LEFT JOIN role on employee.role_id = role.id LEFT JOIN department department on role.department_id = department.id WHERE department.id;",
+
+       function (error, department) {
+           if (error) throw error
+           console.table(department)
+       }) 
+};
