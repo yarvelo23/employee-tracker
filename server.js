@@ -50,7 +50,7 @@ function userPrompt() {
                 "View all employees by department",
                 "View all employees by manager",
                 "Add Employee",
-                "Add department",
+                "Add Department",
                 "Add Role",
                 "Remove Employee",
                 "Update employee role",
@@ -124,6 +124,29 @@ function userPrompt() {
                             userPrompt();
                         })
                     break;
+
+                
+                case "Add Department":
+                    inquirer
+                        .prompt([
+                            {
+                                name: "Department",
+                                type: "input",
+                                message: "Please enter the department you would like to add",
+                                validate: answer => {
+                                    if (answer !== "") {
+                                        return true;
+                                    }
+                                    return "Please enter at least one character!";
+                                }
+                            },
+
+                        ]).then(answers => {
+                            addDepartment(answers.Department);
+                            userPrompt();
+                        })
+                    break;
+                    
             }
         })
 }
