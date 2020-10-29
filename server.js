@@ -93,13 +93,37 @@ function userPrompt() {
                                     if (answer !== "") {
                                         return true;
                                     }
-                                    return "Please enter at least one character.";
+                                    return "Please enter at least one character!";
                                 }
                             },
                             {
-                                
+                                name: "employeeLast",
+                                type: "input",
+                                message: "What is the employee's last name?",
+                                validate: answer => {
+                                    if (answer !== "") {
+                                        return true;
+                                    }
+                                    return "Please enter at least one character!"
+                                }
+                            },
+                            {
+                                name: "department",
+                                type: "input",
+                                message: "Please enter employee's role id",
+
+                            },
+                            {
+                                name: "manager",
+                                type: "input",
+                                message: "Please enter employee manager's id",
                             }
-                        ])
+                        ]).then(answers => {
+
+                            addEmployee(answers.employeeFirst, answers.employeeLast, answers.department, answers.manager);
+                            userPrompt();
+                        })
+                    break;
             }
         })
 }
