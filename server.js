@@ -262,3 +262,17 @@ function byManager() {
             console.table(manager)
         })
 };
+
+// function to update employee's manager
+function updateByManager(managerId, employeeId) {
+
+    var updateManager = connection.query(
+        "UPDATE employee SET manager_id = ? WHERE id = ?",
+        [managerId, employeeId]
+        function (error, updateManager) {
+            if (error) throw error
+        })
+    byManager();
+}
+
+// function to add employee
