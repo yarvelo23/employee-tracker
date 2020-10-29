@@ -177,6 +177,60 @@ function userPrompt() {
                             userPrompt();
                         })
                     break;
+
+                case "Remove Employee":
+                    inquirer
+                        .prompt([
+                            {
+                                name: "id",
+                                type: "input",
+                                message: "Please enter the employee id",
+                            }
+                        ]).then(answers => {
+                            removeEmployee(answers.id);
+                            userPrompt();
+                        })
+                    break;
+
+                case "Update employee role":
+                    inquirer
+                        .prompt([
+                            {
+                                name: "employeeId",
+                                type: "input",
+                                message: "Please enter employee id",
+                            },
+                            {
+                                name: "roleId",
+                                type: "input",
+                                message: "Please enter role id",
+                            }
+                        ]).then(answers => {
+                            updateByRole(answers.employeeId, answers.roleId);
+                            userPrompt();
+                        })
+                    break;
+
+                case "Update employee manager":
+                    inquirer
+                        .prompt([
+                            {
+                                name: "manager",
+                                type: "input",
+                                message: "Please enter manager's id",
+                            },
+                            {
+                                name: "Employee",
+                                type: "input",
+                                message: "Please enter employee id",
+                            }
+                        ]).then(answers => {
+                            updateByManager(answers.manager, answers.Employee);
+                            userPrompt();
+                        })
+                    break;
             }
-        })
+        });
 }
+
+
