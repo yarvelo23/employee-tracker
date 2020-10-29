@@ -57,6 +57,49 @@ function userPrompt() {
                 "Update employee manager"
             ]
 
-            
+        }).then(answers => {
+            switch (answers.action) {
+                // definining cases for viewing
+                case "View all employees":
+
+                    byEmployees();
+                    userPrompt();
+
+                    break;
+                
+                case "View all employees by department":
+
+                    byDepartment();
+                    userPrompt();
+
+                    break;
+                
+                case "View all employees by manager":
+
+                    byManager();
+                    userPrompt();
+
+                    break;
+                
+                // defining cases for adding
+                case "Add Employee":
+                    inquirer
+                        .prompt([
+                            {
+                                name: "employeeFirst",
+                                type: "input",
+                                message: "What is the employee's first name?",
+                                validate: answer => {
+                                    if (answer !== "") {
+                                        return true;
+                                    }
+                                    return "Please enter at least one character.";
+                                }
+                            },
+                            {
+                                
+                            }
+                        ])
+            }
         })
 }
